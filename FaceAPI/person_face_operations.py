@@ -22,11 +22,12 @@ def identify(url,selectedPersonGroup):
         face_ids = [i["faceId"] for i in detect_response.json()]
         identify_body = {"personGroupId":selectedPersonGroup,"faceIds":face_ids}
         identify_response = requests.post(identify_url,headers=headers,json=identify_body)
-        if(identify_response.status_code == 200):
-            for j in identify_response.json():
-                if(len(j["candidates"])>0):
-                    return f"Identified person with confidence {j['candidates'][0]['confidence']}"
-            return f"Could not Identify"
-        return f"Error : {identify_response.json()}"
-    return f"Error : {detect_response.json()}"
+        print(identify_response.json())
+        # if(identify_response.status_code == 200):
+            # for j in identify_response.json():
+            #     if(len(j["candidates"])>0):
+            #         return f"Identified person with confidence {j['candidates'][0]['confidence']}"
+            # return f"Could not Identify"
+        return identify_response.json()
+    return detect_response.json()
 

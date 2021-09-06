@@ -17,4 +17,26 @@
   
 
   </form>
+  <br>
+  <br>
+  <hr>
+  <table border="1">
+    <tr>
+        <td>Aadhar</td>
+        <td>Confidence</td>
+    </tr>
+    {% for person in identifiedPersonList %}
+      
+        <tr>
+            {% if person["candidates"] | length >0 %}
+            <td>{{person["candidates"][0]['name']}}</td>
+            <td>{{person["candidates"][0]['confidence']}}</td>
+            {% else %}
+            <td>NA</td>
+            <td>NA</td>
+            {% endif %}
+            
+        </tr>
+    {% endfor %}
+</table>
   <p>{{message}}</p>

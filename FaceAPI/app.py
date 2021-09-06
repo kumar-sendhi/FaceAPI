@@ -119,6 +119,12 @@ def person_identify():
         image_url = request.form["url"]
         res = person_face_operations.identify(image_url,selectedPersonGroup)
         personGroupList = person_group_operations.get_all_person_groups()
+        if(type(res)==list):
+            for j in res:
+                if(len(j["candidates"])>0):
+                    person_name = person_operations.get_person(selectedPersonGroup,j['candidates'][0]['personId'])
+                    j["candidates"][0]["name"] = person_name["name"]
+            return render_template("personIdentify.html",identifiedPersonList=res,personGroupList=personGroupList)
         return render_template("personIdentify.html",message=res,personGroupList=personGroupList)
     else:
         personGroupList = person_group_operations.get_all_person_groups()

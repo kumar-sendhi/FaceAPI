@@ -1,0 +1,31 @@
+# Default values for rest-api-sample.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image: "registry.scontain.com:5050/clenimar/azure-integration-demo:restapiv1-scone5.2.1"
+imagePullPolicy: Always
+imagePullSecrets: 
+  - name: sconeapps
+
+# Configure attestation.
+scone:
+  cas: ""
+  configId: ""
+
+# Configure Service.
+service:
+  # NOTE: This is the Service port - the "containerPort" is fixed (4996).
+  port: 4996
+  type: NodePort
+
+env: []
+
+resources: {}
+
+securityContext: {}
+
+useSGXDevPlugin: "scone"
+
+# Amount of EPC memory to request to Azure, in MiB.
+# Used only when `useSGXDevPlugin=azure`.
+sgxEpcMem: "4"

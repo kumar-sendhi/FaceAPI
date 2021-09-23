@@ -1,0 +1,6 @@
+export FLASK_SESSION="FlaskSession-8756-11480-18921"
+export REDIS_SESSION="RedisSession-1655-32625-27225"
+export SCONE_CAS_ADDR="4-2-1.scone-cas.cf"
+export IMAGE="application:v0.4"
+export DEVICE="/dev/isgx"
+
